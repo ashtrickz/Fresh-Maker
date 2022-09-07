@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ColorComparator : MonoBehaviour
 {
     public int level = 1;
-    private int accuracyPercent;
+    public int accuracyPercent;
 
     private float threshold = 0.1f;
     
@@ -14,8 +14,6 @@ public class ColorComparator : MonoBehaviour
     
     [SerializeField] private Color[] lvlColor;
 
-    [SerializeField] private Image colorImage;
-    
     public void CompareColors(Color mixedColor)
     {
         if(level <= lvlColor.Length)
@@ -33,7 +31,7 @@ public class ColorComparator : MonoBehaviour
         var bDist = Mathf.Abs(levelColor.b - mixedColor.b);
 
         accuracyPercent = Mathf.Abs((int) ((100 - ((rDist + gDist + bDist) * 100)) + .5f));
-        
+        FindObjectOfType<RoundPopUp>().ShowAccuracy(accuracyPercent);
         Debug.Log($"R Dist: {rDist}, G Dist: {gDist}, B Dist: {bDist}, together: {rDist + gDist + bDist}");
         Debug.Log($"Your accuracy is {accuracyPercent}%");
         if(rDist + gDist + bDist > threshold)
@@ -48,7 +46,7 @@ public class ColorComparator : MonoBehaviour
             level++;
         }
         client = FindObjectOfType<ClientMovement>();
-        client.WalkAway();
+        client.CustomerServed();
     }
     
 }

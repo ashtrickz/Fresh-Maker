@@ -3453,9 +3453,10 @@ GameObject:
   - component: {fileID: 4969219330278486}
   - component: {fileID: 95752776893742416}
   - component: {fileID: 1891485223}
+  - component: {fileID: 1891485227}
   m_Layer: 0
   m_Name: SM_Chr_Business_Female_03
-  m_TagString: Untagged
+  m_TagString: Client
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3526,6 +3527,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c273ff06034c98e428ffad91272ded99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 95752776893742416}
+  nextClientPrefab: {fileID: 8239972793809676498, guid: 74ee106a6fa4bee4d8b45317f4bae0d8,
+    type: 3}
+--- !u!65 &1891485227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822189464268616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.40259576, y: 1.8939002, z: 1}
+  m_Center: {x: -0.015385747, y: 0.8137964, z: 0}
 --- !u!1 &1873043514680724
 GameObject:
   m_ObjectHideFlags: 0
