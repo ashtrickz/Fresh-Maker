@@ -20,7 +20,9 @@ public class BlenderManager : MonoBehaviour
     [Space]
     [SerializeField] private Renderer liquid;
     [SerializeField] private Renderer[] cupLiquid;
-
+    [Space]
+    [SerializeField] private AudioSource blenderSound;
+    
     [HideInInspector] public bool isReady = false;
     [HideInInspector] public bool isMixing = false;
     
@@ -131,12 +133,15 @@ public class BlenderManager : MonoBehaviour
 
     IEnumerator MakingFresh()
     {
+        blenderSound.Play();
         pool.DisablePool();
         CloseCap();
         UpdateColor();
         yield return new WaitForSeconds(0.5f);
         mixer.transform.DOShakeRotation(3f, 1, 10, 35f, true);
         yield return new WaitForSeconds(3f);
+        blenderSound.DOFade(0, 0.5f).OnComplete(
+            () => blenderSound.Stop());
         OpenCap();
         ResetList();
         isReady = true;

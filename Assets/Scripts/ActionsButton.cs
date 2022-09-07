@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ActionsButton : MonoBehaviour
 {
@@ -11,8 +15,11 @@ public class ActionsButton : MonoBehaviour
     [SerializeField] private Button[] otherButtons;
     [Space]
     [SerializeField] private RectTransform[] positions;
-
+    [Space]
+    [SerializeField] private Image tutorialImage;
+    
     public bool isClosed = true;
+    public bool tutorialOn = false;
 
     public void OpenActions()
     {
@@ -37,5 +44,24 @@ public class ActionsButton : MonoBehaviour
             isClosed = true;
         }
     }
+
+    public void Tutorial()
+    {
+        if (!tutorialOn)
+        {
+            tutorialImage.DOFade(0, 0);
+            tutorialImage.gameObject.SetActive(true);
+            tutorialImage.DOFade(1, 0.5f);
+            tutorialOn = true;
+        }
+        else if (tutorialOn)
+        {
+            tutorialOn = false;
+            tutorialImage.DOFade(0, 0.5f).OnComplete(
+                () => tutorialImage.gameObject.SetActive(false));
+        }
+    }
+
+    public void Restart() => SceneManager.LoadScene("GameScene");
 
 }
