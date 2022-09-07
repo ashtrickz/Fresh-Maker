@@ -133,6 +133,7 @@ public class BlenderManager : MonoBehaviour
 
     IEnumerator MakingFresh()
     {
+        blenderSound.DOFade(1, 0);
         blenderSound.Play();
         pool.DisablePool();
         CloseCap();
