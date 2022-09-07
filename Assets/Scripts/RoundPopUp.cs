@@ -18,6 +18,8 @@ public class RoundPopUp : MonoBehaviour
     [SerializeField] private Color[] roundColors;
     [Space]
     [SerializeField] private ColorComparator comparator;
+    [Space]
+    [SerializeField] private Image darken;
 
     private int scalingFrames = 0;
     private float scaleStep = 0.1f;
@@ -25,6 +27,8 @@ public class RoundPopUp : MonoBehaviour
 
     private void Start()
     {
+        darken.gameObject.SetActive(true);
+        darken.DOFade(0, 1f).OnComplete(() => Destroy(darken.gameObject));
         textBackground.DOFade(0, 0);
         accuracyText.DOFade(0, 0);
     }
@@ -72,7 +76,7 @@ public class RoundPopUp : MonoBehaviour
 
     private IEnumerator AccuracyRotation(int accuracy)
     {
-        accuracyText.text = "Accuracy:\n" + accuracy + "%";
+        accuracyText.text = "Accuracy\n" + accuracy + "%";
         textBackground.DOFade(1, .5f);
         accuracyText.DOFade(1, 1f);
         yield return new WaitForSeconds(3f);

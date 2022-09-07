@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraSwitch : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class CameraSwitch : MonoBehaviour
     [SerializeField] private Transform[] cameraPosition;
 
     [SerializeField] private RoundPopUp popUp;
-    
+
     private bool cameraSwitched = true;
 
     void Start()
